@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 22:51:03 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/05 22:59:43 by spoolpra         ###   ########.fr       */
+/*   Created: 2022/03/05 23:35:53 by spoolpra          #+#    #+#             */
+/*   Updated: 2022/03/06 00:12:00 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "fdf.h"
 #include "libft.h"
 #include <math.h>
 
-static void	usage(void)
+void	free_array(char **array)
 {
-	ft_printf("Usage: ./fdf [file.fdf]\n");
-	exit(1);
+	int	i;
+
+	i = 0;
+	if (array == NULL)
+		return ;
+	while (array[i] != 0)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
 
-int	main(int argc, char **argv)
+void	free_data(t_data *data)
 {
-	void	*mlx;
-	t_data	data;
-
-	if (argc > 2)
-		usage();
-	mlx = mlx_init();
-	parsing_file(argv[1], &data);
-	free(mlx);
-	return(0);
+	if (data->attribute)
+		free(data->attribute);
+	if (data->color)
+		free(data->color);
 }

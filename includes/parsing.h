@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 22:51:03 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/05 22:59:43 by spoolpra         ###   ########.fr       */
+/*   Created: 2022/03/05 23:03:14 by spoolpra          #+#    #+#             */
+/*   Updated: 2022/03/06 00:40:21 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "fdf.h"
-#include "libft.h"
-#include <math.h>
+#ifndef PARSING_H
+# define PARSING_H
 
-static void	usage(void)
-{
-	ft_printf("Usage: ./fdf [file.fdf]\n");
-	exit(1);
-}
+# include "fdf.h"
 
-int	main(int argc, char **argv)
-{
-	void	*mlx;
-	t_data	data;
+size_t	array_size(char **array);
+void	error_open(void);
+void	error_data(t_data *data);
+void	error_close(t_data *data);
+void	error_split_line(t_data *data);
+void	error_input(char **array, t_data *data);
+void	realloc_data(t_data *data, size_t new_size, size_t org_size);
 
-	if (argc > 2)
-		usage();
-	mlx = mlx_init();
-	parsing_file(argv[1], &data);
-	free(mlx);
-	return(0);
-}
+#endif
