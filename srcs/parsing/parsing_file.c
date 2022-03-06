@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 22:55:20 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 13:03:06 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/06 13:42:19 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ static void	extract_data(int fd, t_data *data)
 	while (line != NULL)
 	{
 		row++;
+		if (line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = '\0';
 		array = ft_split(line, ' ');
 		free(line);
 		if (array == NULL)

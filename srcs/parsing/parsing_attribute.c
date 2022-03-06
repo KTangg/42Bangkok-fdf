@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 11:55:31 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 13:05:15 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/06 13:43:52 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	valid_attribute(char *str, t_data *data, int index)
 		i++;
 	while (str[i] != '\0')
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i++]))
 			return (0);
 	}
 	data->attribute[index] = ft_atoi(str);
