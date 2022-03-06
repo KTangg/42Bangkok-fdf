@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:03 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 13:47:32 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/06 23:10:46 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,34 @@ static void	usage(void)
 	exit(1);
 }
 
-static void	print_data(t_data data)
+static int	init_mlx(t_info *info)
 {
-	int	i;
-	int	total;
-
-	total = data.n_row * data.n_col;
-	i = 0;
-	while (i < total)
-	{
-		ft_printf("Data: %d, %d\n", data.attribute[i], data.color[i]);
-		i++;
-	}
+	info->mlx = NULL;
+	info->window = NULL;
+	info->mlx = mlx_init();
+	if (info->mlx == NULL)
+		return (0);
+	info->window = mlx_new_window(info->mlx, RESO_X, RESO_Y, "FDF");
+	if (info->window == NULL)
+		return (0);
+	info->angle_x = 45;
+	info->angle_y = 45;
+	info->zoom = 100;
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	void	*mlx;
+	t_info	info;
 	t_data	data;
 
 	if (argc != 2)
 		usage();
-	mlx = mlx_init();
 	parsing_file(argv[1], &data);
-	print_data(data);
+	if (!init_mlx(&info))
+		error_init(&data, &info);
+	render(&info, &data);
 	free_data(&data);
-	free(mlx);
+	free_info(&info);
 	return (0);
 }

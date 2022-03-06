@@ -1,46 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/05 23:35:53 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 22:57:26 by spoolpra         ###   ########.fr       */
+/*   Created: 2022/03/06 22:31:43 by spoolpra          #+#    #+#             */
+/*   Updated: 2022/03/06 22:52:58 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx.h"
 #include "fdf.h"
 #include "libft.h"
 #include <math.h>
 
-void	free_array(char **array)
+void	error_init(t_data *data, t_info *info)
 {
-	int	i;
-
-	i = 0;
-	if (array == NULL)
-		return ;
-	while (array[i] != 0)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
-
-void	free_data(t_data *data)
-{
-	if (data->attribute)
-		free(data->attribute);
-	if (data->color)
-		free(data->color);
-}
-
-void	free_info(t_info *info)
-{
-	if (info->mlx)
-		free(info->mlx);
-	if (info->window)
-		free(info->window);
+	free_data(data);
+	free_info(info);
+	ft_putendl_fd("Error: Invalid display.", 2);
+	exit(6);
 }
