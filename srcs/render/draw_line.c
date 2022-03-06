@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 22:59:28 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 23:24:36 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/07 01:24:46 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,45 @@
 #include "libft.h"
 #include <math.h>
 
-static double	deg_to_rad(int degree)
+void	draw_line_x(size_t index, t_data *data, t_info *info, t_vector unit)
 {
-	double	rad;
+	int	i;
+	int	color;
+	int	z_grad;
+	int	color_grad;
 
-	rad = degree * (M_PI / 180);
-	return (rad);
+	i = 0;
+	color = data->color[index];
+	z_grad = (data->attribute[index + 1] - data->attribute[index]) / MAGNITUDE;
+	unit.z.delta_x = z_grad * unit.z.delta_x;
+	unit.z.delta_y = z_grad * unit.z.delta_y;
+	color_grad = (data->color[index + 1] - data->color[index]) / MAGNITUDE;
+	while (i < MAGNITUDE)
+	{
+		mlx_pixel_put(info->mlx, info->window, data->start_x + (i * (unit.x.delta_x + unit.z.delta_x)), data->start_y + (i * (unit.x.delta_y + unit.z.delta_y)), color);
+		color = color + color_grad;
+		i++;
+	}
 }
 
-void	draw_line_x(size_t index, t_data *data, t_info *info)
+void	draw_line_y(size_t index, t_data *data, t_info *info, t_vector unit)
 {
-	static size_t	start_x = INIT_X;
-	static size_t	start_y = INIT_Y;
-	size_t	end_x;
-	size_t	end_y;
+	int	i;
+	int	color;
+	int	z_grad;
+	int	color_grad;
 
-	(void)data;
-	(void)index;
-	end_x = start_x + (cos(deg_to_rad(info->angle_x)) * MAGNITUDE);
-	end_y = start_y + (cos(deg_to_rad(info->angle_y)) * MAGNITUDE);
-	mlx_pixel_put(info->mlx, info->window, start_x, start_y, data->color[index]);
-	start_x = end_x;
-	start_y = end_y;
+	i = 0;
+	color = data->color[index];
+	z_grad = (data->attribute[index + data->n_col] - data->attribute[index]) / MAGNITUDE;
+	unit.z.delta_x = z_grad * unit.z.delta_x;
+	unit.z.delta_y = z_grad * unit.z.delta_y;
+	color_grad = (data->color[index + data->n_col] - data->color[index]) / MAGNITUDE;
+	while (i < MAGNITUDE)
+	{
+		mlx_pixel_put(info->mlx, info->window, data->start_x + (i * (unit.y.delta_x + unit.z.delta_x)), data->start_y + (i * (unit.y.delta_y + unit.z.delta_y)), color);
+		color = color + color_grad;
+		i++;
+	}
 }
 
-void	draw_line_y(size_t index, t_data *data, t_info *info)
-{
-	static size_t	start_x = INIT_X;
-	static size_t	start_y = INIT_Y;
-	size_t	end_x;
-	size_t	end_y;
-
-	end_x = start_x - (cos(deg_to_rad(info->angle_x)) * MAGNITUDE);
-	end_y = start_y + (cos(deg_to_rad(info->angle_y)) * MAGNITUDE);
-	mlx_pixel_put(info->mlx, info->window, start_x, start_y, data->color[index]);
-	start_x = end_x;
-	start_y = end_y;
-}

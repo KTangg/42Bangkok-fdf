@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 11:55:31 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 13:43:52 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/07 00:32:23 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	get_rgb(char *str, t_data *data, int index)
 {
 	if (str == 0)
 	{
-		data->color[index] = 0;
+		data->color[index] = 0xFFFFFF;
 		return (1);
 	}
 	else
