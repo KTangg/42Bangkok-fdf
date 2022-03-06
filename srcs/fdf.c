@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:03 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 13:06:05 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/06 13:34:16 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 		usage();
 	mlx = mlx_init();
 	parsing_file(argv[1], &data);
+	free_data(&data);
 	free(mlx);
 	return (0);
 }
