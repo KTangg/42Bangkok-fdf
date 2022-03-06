@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 22:55:20 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 00:57:00 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/06 11:49:17 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,29 @@
 #include "libft.h"
 #include "parsing.h"
 
-static void	valid_arg(char *arg, t_data *data)
+static int valid_arg(char *arg, t_data *data, int index)
 {
 	int		color;
 	int		attribute;
 	char	**array;
+	size_t	array_size;
 
 	array = ft_split(arg, ',');
 	if (array == NULL)
-		error_split(data);
-
+		return (0);
+	array_size = array_size(array);
+	if (array_size < 1 || array_size > 2)
+		return (0);
+	if (!valid_attribute(array[0], &attribute))
+		return (0);
+	if (array_size == 1)
+		color = 0;
+	else
+		if (!valid_rgb(array[1], &color))
+			return (0);
+	data->color[index] = color;
+	data->attribute[index] = attribute;
+	return (1);
 }
 
 static void	valid_input(char **array, t_data *data, size_t row)
@@ -41,7 +54,7 @@ static void	valid_input(char **array, t_data *data, size_t row)
 	realloc_data(data, total, total - col);
 	while (array[i] != 0)
 	{
-		if (!valid_arg(array[i++], data))
+		if (!valid_arg(array[i++], data, total - col + i))
 			error_input(array, data);
 	}
 }
