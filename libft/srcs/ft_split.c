@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:47:44 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/16 12:47:44 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/06 13:32:36 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static size_t	cnt_size(const char *s, char c)
 		s++;
 	}
 	end = (char *)s;
-	if (end - start > 1)
+	if (end - start > 1 || ((end - start > 0) && *start != c))
 		cnt = cnt + 1;
 	return (cnt + 1);
 }
@@ -93,7 +93,7 @@ static int	cutting_string(const char *s, char c, char **array, char *start)
 				return (0);
 		}
 	}
-	if (((s - 1) - start > 0 && *start != c))
+	if ((s - start > 0 && *start != c))
 	{
 		if (!append_array(array, i++, &start, s - start))
 			return (0);
