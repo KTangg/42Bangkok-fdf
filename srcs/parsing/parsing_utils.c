@@ -6,11 +6,11 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 00:03:18 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 00:39:15 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/06 12:22:37 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "parsing.h"
 #include "libft.h"
 
 size_t	array_size(char **array)

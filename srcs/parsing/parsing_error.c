@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 23:01:57 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 00:25:26 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/06 12:21:54 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	error_close(t_data *data)
 	exit(2);
 }
 
-void	error_input(char **array, char *line, t_data *data)
+void	error_input(char **array, t_data *data)
 {
 	free_data(data);
 	free_array(array);

@@ -6,36 +6,38 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 22:55:20 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 11:49:17 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/06 13:03:06 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
 #include "libft.h"
 #include "parsing.h"
 
-static int valid_arg(char *arg, t_data *data, int index)
+static int	valid_arg(char *arg, t_data *data, int index)
 {
-	int		color;
-	int		attribute;
 	char	**array;
-	size_t	array_size;
+	size_t	size;
 
 	array = ft_split(arg, ',');
 	if (array == NULL)
 		return (0);
-	array_size = array_size(array);
-	if (array_size < 1 || array_size > 2)
+	size = array_size(array);
+	if (size < 1 || size > 2)
+	{
+		free_array(array);
 		return (0);
-	if (!valid_attribute(array[0], &attribute))
+	}
+	if (!valid_attribute(array[0], data, index))
+	{
+		free_array(array);
 		return (0);
-	if (array_size == 1)
-		color = 0;
-	else
-		if (!valid_rgb(array[1], &color))
-			return (0);
-	data->color[index] = color;
-	data->attribute[index] = attribute;
+	}
+	if (!get_rgb(array[1], data, index))
+	{
+		free_array(array);
+		return (0);
+	}
+	free_array(array);
 	return (1);
 }
 
@@ -54,12 +56,14 @@ static void	valid_input(char **array, t_data *data, size_t row)
 	realloc_data(data, total, total - col);
 	while (array[i] != 0)
 	{
-		if (!valid_arg(array[i++], data, total - col + i))
+		if (!valid_arg(array[i], data, total - col + i))
 			error_input(array, data);
+		i++;
 	}
+	free_array(array);
 }
 
-static void	*extract_data(int fd, t_data *data)
+static void	extract_data(int fd, t_data *data)
 {
 	char	*line;
 	char	**array;
@@ -74,8 +78,7 @@ static void	*extract_data(int fd, t_data *data)
 		free(line);
 		if (array == NULL)
 			error_split(data);
-		if (!valid_input(array, data, row))
-			error_input(array, data);
+		valid_input(array, data, row);
 		line = get_next_line(fd);
 	}
 	data->n_row = row;
