@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:40:10 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/24 12:40:40 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:20:18 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	detect_nl(char *str)
 static char	*read_file(int fd, char *str)
 {
 	int		byte_read;
-	char	*s2;
 	char	*new;
 	char	buffer[BUFFER_SIZE];
 
@@ -40,13 +39,10 @@ static char	*read_file(int fd, char *str)
 		byte_read = read(fd, buffer, BUFFER_SIZE);
 		if (byte_read <= 0)
 			break ;
-		s2 = (char *)malloc(sizeof(char) * (byte_read + 1));
-		ft_strlcpy(s2, buffer, byte_read + 1);
-		new = (char *)malloc((ft_strlen(str) + ft_strlen(s2) + 1));
+		new = (char *)malloc((ft_strlen(str) + byte_read + 1));
 		ft_strlcpy(new, str, ft_strlen(str) + 1);
-		ft_strlcpy(&new[ft_strlen(str)], s2, ft_strlen(s2) + 1);
+		ft_strlcpy(&new[ft_strlen(str)], buffer, byte_read + 1);
 		free(str);
-		free(s2);
 		str = new;
 		if (detect_nl(str) >= 0)
 			break ;

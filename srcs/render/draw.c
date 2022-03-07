@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:02:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/07 16:54:35 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/07 23:31:09 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,23 @@ void	draw_line(t_line line, t_img *img)
 	t_delta	delta;
 
 	delta.delta_x = line.end.x - line.start.x;
-	delta.delta_y  = line.end.y - line.start.y;
-	size = sqrt(pow(delta.delta_x , 2) + pow(delta.delta_y , 2));
+	delta.delta_y = line.end.y - line.start.y;
+	size = sqrt(pow(delta.delta_x, 2) + pow(delta.delta_y, 2));
 	delta.delta_x = delta.delta_x / size;
 	delta.delta_y = delta.delta_y / size;
 	delta_c = (line.end.c - line.start.c) / size;
 	i = 0;
 	while (i < size)
 	{
-		image_put_pixel(img, line.start.x + (delta.delta_x * i),
-			line.start.y + (delta.delta_y * i), line.start.c + (delta_c * i));
+		if (line.start.x + (int)(delta.delta_x * i) <= RESO_X &&
+			line.start.x + (int)(delta.delta_x * i) >= 0 &&
+			line.start.y + (int)(delta.delta_y * i) <= RESO_Y &&
+			line.start.y + (int)(delta.delta_y * i) >= 0)
+		{
+			image_put_pixel(img, line.start.x + (int)(delta.delta_x * i),
+				line.start.y + (int)(delta.delta_y * i),
+				line.start.c + (int)(delta_c * i));
+		}
 		i++;
 	}
 }

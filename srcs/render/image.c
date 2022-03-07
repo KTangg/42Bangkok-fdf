@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:44:32 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/07 16:52:42 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 00:13:33 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	clear_image(t_img *image)
 	if (image)
 	{
 		if (image->ptr)
-			ft_bzero(image->ptr, *image->bpp * RESO_X * RESO_Y);
+			ft_bzero(image->ptr, image->bpp * RESO_X * RESO_Y);
 	}
 }
 
@@ -29,7 +29,7 @@ void	image_put_pixel(t_img *image, int x, int y, int color)
 	((int *)image->ptr)[(y * RESO_X) + x] = color;
 }
 
-void	draw_image(t_view *view, t_data *data, t_img *image)
+void	draw_image(t_view view, t_data *data, t_img *image)
 {
 	size_t		x;
 	size_t		y;
@@ -69,8 +69,8 @@ t_img	*create_new_img(t_info *info)
 		return (NULL);
 	}
 	img->mlx_img = mlx_img;
-	img->ptr = mlx_get_data_addr(mlx_img, img->bpp, img->line, img->end);
-	*img->bpp = *img->bpp / 8;
-	ft_bzero(img->ptr, *img->bpp * RESO_X * RESO_Y);
+	img->ptr = mlx_get_data_addr(mlx_img, &img->bpp, &img->line, &img->end);
+	img->bpp = img->bpp / 8;
+	ft_bzero(img->ptr, img->bpp * RESO_X * RESO_Y);
 	return (img);
 }

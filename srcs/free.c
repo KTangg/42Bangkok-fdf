@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 23:35:53 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/07 14:58:49 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 00:12:27 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,10 @@ void	free_image(void *mlx_ptr, t_img *image)
 
 void	free_info(t_info *info)
 {
-	if (info->mlx)
-		free(info->mlx);
-	if (info->window)
-		free(info->window);
-	if (info->view)
-		free(info->view);
 	if (info->image)
 		free_image(info->mlx, info->image);
+	if (info->window)
+		mlx_destroy_window(info->mlx, info->window);
+	if (info->mlx)
+		free(info->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:11 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/07 16:53:50 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 00:28:09 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # include <errno.h>
 
 # define STDERR 2
+# define ESC_KEY 65307
 // Resolution of window
 # define RESO_X 1200
 # define RESO_Y 900
 // Where the image start
-# define INIT_X 300
-# define INIT_Y 300
+# define INIT_X 600
+# define INIT_Y 0
 // 1-unit equal to x pixel
 # define MAGNITUDE 10
 
@@ -46,7 +47,7 @@ typedef struct s_coor
 {
 	int	x;
 	int	y;
-	int c;
+	int	c;
 }	t_coor;
 
 // Store coordinate and unit vector
@@ -78,6 +79,7 @@ typedef struct s_view
 	int		scale;
 	int		angle_x;
 	int		angle_y;
+	double	level;
 	double	offset_x;
 	double	offset_y;
 }	t_view;
@@ -87,9 +89,9 @@ typedef struct s_img
 {
 	void	*mlx_img;
 	char	*ptr;
-	int		*bpp;
-	int		*line;
-	int		*end;
+	int		bpp;
+	int		line;
+	int		end;
 }	t_img;
 
 // Store information on displaying
@@ -98,8 +100,15 @@ typedef struct s_info
 	void	*mlx;
 	void	*window;
 	t_img	*image;
-	t_view	*view;
+	t_view	view;
 }	t_info;
+
+// Store all information
+typedef struct s_fdf
+{
+	t_info	info;
+	t_data	data;
+}	t_fdf;
 
 // Free Process
 void		free_data(t_data *data);
@@ -117,17 +126,17 @@ void		connect_y(t_img *img, t_pen pen, t_data *data, int i);
 // Render Process
 void		clear_image(t_img *image);
 void		render(t_info *info, t_data *data);
-void		draw_image(t_view *view, t_data *data, t_img *image);
+void		draw_image(t_view view, t_data *data, t_img *image);
 void		image_put_pixel(t_img *image, int x, int y, int color);
 t_img		*create_new_img(t_info *info);
 
 // Coordinate Process
-t_pen		init_pen(t_view *view);
+t_pen		init_pen(t_view view);
 t_pen		move_pen(t_pen pen, int move_x, int move_y);
 t_coor		move_coor(t_pen pen, int x, int y, int z);
 
 // Vector Process
-t_vector	unit_vector(t_view *view);
+t_vector	unit_vector(t_view view);
 
 // Parsing Process
 void		parsing_file(char *file_path, t_data *data);

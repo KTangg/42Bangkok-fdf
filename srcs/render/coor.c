@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:25:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/07 16:55:41 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 00:15:27 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include <math.h>
 
-t_pen	init_pen(t_view *view)
+t_pen	init_pen(t_view view)
 {
 	t_pen	pen;
 
@@ -52,9 +52,9 @@ t_coor	move_coor(t_pen pen, int x, int y, int z)
 	new.c = 0;
 	unit = pen.unit;
 	org = pen.coor;
-	new.x = org.x + ((unit.x.delta_x * x) +  (unit.y.delta_x * y)
-		+ (unit.z.delta_x * z) * MAGNITUDE);
-	new.y = org.x + ((unit.x.delta_y * x) +  (unit.y.delta_y * y)
-		+ (unit.z.delta_y * z) * MAGNITUDE);
+	new.x = org.x + (((unit.x.delta_x * x) + (unit.y.delta_x * y)
+				+ (unit.z.delta_x * z)) * MAGNITUDE);
+	new.y = org.y + (((unit.x.delta_y * x) + (unit.y.delta_y * y)
+				+ (unit.z.delta_y * z)) * MAGNITUDE);
 	return (new);
 }
