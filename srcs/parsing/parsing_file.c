@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 22:55:20 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/07 00:36:30 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:55:57 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ void	parsing_file(char *file_path, t_data *data)
 		error_open();
 	data->n_col = 0;
 	data->n_row = 0;
-	data->start_x = INIT_X;
-	data->start_y = INIT_Y;
 	data->color = NULL;
 	data->attribute = NULL;
 	extract_data(fd, data);

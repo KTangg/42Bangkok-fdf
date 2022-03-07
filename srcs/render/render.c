@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 14:46:22 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/07 01:29:23 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:43:58 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,15 @@
 
 void	render(t_info *info, t_data *data)
 {
-	size_t		x;
-	size_t		y;
-	t_vector	unit;
+	int		off_x;
+	int		off_y;
+	t_img	*image;
 
+	image = info->image;
+	off_x = info->view->offset_x;
+	off_y = info->view->offset_y;
+	clear_image(info->image);
+	draw_image(info->view, data, image);
 	mlx_clear_window(info->mlx, info->window);
-	unit = unit_vector(info);
-	y = 0;
-	while (y < data->n_row)
-	{
-		x = 0;
-		while (x < data->n_col)
-		{
-			if (x + 1 < data->n_col)
-				draw_line_x(y * (data->n_col) + x, data, info, unit);
-			if (y + 1 < data->n_row)
-				draw_line_y(y * (data->n_col) + x, data, info, unit);
-			x++;
-			data->start_x = data->start_x + (unit.x.delta_x * MAGNITUDE));
-			data->start_y = data->start_y + (unit.x.delta_y * MAGNITUDE));
-		}
-		y++;
-		data->start_x = INIT_X + (y *(unit.y.delta_x * MAGNITUDE));
-		data->start_y = INIT_Y + (y *(unit.y.delta_y * MAGNITUDE));
-	}
+	mlx_put_image_to_window(info->mlx, info->window, image->ptr, off_x, off_y);
 }

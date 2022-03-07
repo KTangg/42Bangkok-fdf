@@ -6,10 +6,11 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 23:35:53 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/06 22:57:26 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:58:49 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx.h"
 #include "fdf.h"
 #include "libft.h"
 #include <math.h>
@@ -37,10 +38,23 @@ void	free_data(t_data *data)
 		free(data->color);
 }
 
+void	free_image(void *mlx_ptr, t_img *image)
+{
+	if (!image)
+		return ;
+	if (image->mlx_img)
+		mlx_destroy_image(mlx_ptr, image->mlx_img);
+	free(image);
+}
+
 void	free_info(t_info *info)
 {
 	if (info->mlx)
 		free(info->mlx);
 	if (info->window)
 		free(info->window);
+	if (info->view)
+		free(info->view);
+	if (info->image)
+		free_image(info->mlx, info->image);
 }
