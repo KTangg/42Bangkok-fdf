@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:11 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 18:47:32 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:14:23 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct s_view
 	int		offset_x;
 	int		offset_y;
 	double	level;
+	char	project;
 }	t_view;
 
 // Store image basic information ptr = start of image, bpp = byte per pixel
@@ -147,6 +148,7 @@ t_coor		move_coor(t_pen pen, int x, int y, int z);
 
 // Vector Process
 t_vector	unit_vector(t_view *view);
+t_vector	parallel_unit_vector(t_view *view);
 
 // Parsing Process
 void		parsing_file(char *file_path, t_data *data);

@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:02:39 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 18:56:31 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:15:28 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ int	hook_keydown_3(int key, t_fdf *fdf)
 	if (key == E_KEY)
 	{
 		fdf->info->view->angle = (fdf->info->view->angle + 10) % 360;
+		render(fdf->info, fdf->data);
+	}
+	if (key == P_KEY)
+	{
+		fdf->info->view->project = 'p';
+		render(fdf->info, fdf->data);
+	}
+	if (key == I_KEY)
+	{
+		fdf->info->view->project = 'i';
 		render(fdf->info, fdf->data);
 	}
 	return (1);

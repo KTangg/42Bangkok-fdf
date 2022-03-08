@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.c                                           :+:      :+:    :+:   */
+/*   isometric.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 00:05:53 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 18:24:32 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:15:44 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ t_vector	unit_vector(t_view *view)
 {
 	t_vector	unit;
 
+	if (view->project == 'p')
+		return (parallel_unit_vector(view));
 	unit.x = unit_x(view);
 	unit.y = unit_y(view);
 	unit.z = unit_z(unit.x, unit.y, view->level);

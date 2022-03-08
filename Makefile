@@ -6,7 +6,7 @@
 #    By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 18:33:16 by spoolpra          #+#    #+#              #
-#    Updated: 2022/03/08 17:58:57 by spoolpra         ###   ########.fr        #
+#    Updated: 2022/03/08 20:06:49 by spoolpra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ MLX_DIR = /usr/local/lib/minilibx
 INCS = -Iincludes/ -I$(LIB_DIR)includes/ -I$(MLX_DIR)
 NAME = fdf
 PARSING = parsing/parsing_file.c parsing/parsing_error.c parsing/parsing_utils.c parsing/parsing_attribute.c
-RENDER = render/render.c render/image.c render/draw.c render/coor.c render/vector.c
+RENDER = render/render.c render/image.c render/draw.c render/coor.c render/isometric.c render/parallel.c
 EVENT = event/keyboard.c event/mouse.c
 SRCS = fdf.c free.c error.c $(PARSING) $(RENDER) $(EVENT)
 OBJS = $(SRCS:.c=.o)
