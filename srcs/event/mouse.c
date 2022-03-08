@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:40:31 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 20:00:33 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:43:00 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	hook_mouse(int key, int x, int y, t_fdf *fdf)
 	}
 	if (key == 5)
 	{
-		if (fdf->info->view->scale > 20)
+		if (fdf->info->view->scale > 30)
 		{
 			fdf->info->view->scale -= 5;
 			render(fdf->info, fdf->data);
