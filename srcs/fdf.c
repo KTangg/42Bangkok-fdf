@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:03 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 15:34:20 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:27:57 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
 		error_init(&data, &info);
 	fdf.info = &info;
 	fdf.data = &data;
-	render(&info, &data);
+	render(&fdf);
 	mlx_mouse_hook(info.window, hook_mouse, &fdf);
 	mlx_hook(info.window, ON_DESTROY, 0, close_fdf, &fdf);
 	mlx_key_hook(info.window, hook_keydown, &fdf);

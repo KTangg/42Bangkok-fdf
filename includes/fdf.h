@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:11 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 14:53:42 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:30:30 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void		connect_y(t_img *img, t_pen pen, t_data *data, int i);
 
 // Render Process
 void		clear_image(t_img *image);
-void		render(t_info *info, t_data *data);
+void		render(t_fdf *fdf);
 void		draw_image(t_view *view, t_data *data, t_img *image);
 void		image_put_pixel(t_img *image, int x, int y, int color);
 t_img		*create_new_img(t_info *info);
