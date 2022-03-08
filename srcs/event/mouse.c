@@ -6,11 +6,10 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:40:31 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 18:34:28 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:57:12 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "fdf.h"
 #include "libft.h"
 
