@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:11 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 13:43:35 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:53:42 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 # define ESC_KEY 65307
 # define PLUS_KEY 65451
 # define MINUS_KEY 65453
+# define ON_DESTROY 17
 // Resolution of window
 # define RESO_X 1200
 # define RESO_Y 900
 // 1-unit equal to x pixel
-# define MAGNITUDE 10
+# define MAGNITUDE 20
 
 // Store delta-x delta-y if we move x-unit in x, y or z direction
 typedef struct s_delta
@@ -105,8 +106,8 @@ typedef struct s_info
 // Store all information
 typedef struct s_fdf
 {
-	t_info	info;
-	t_data	data;
+	t_info	*info;
+	t_data	*data;
 }	t_fdf;
 
 // Free Process
@@ -118,8 +119,8 @@ void		free_array(char **array);
 void		error_init(t_data *data, t_info *info);
 
 // Event Process
-int			hook_mouse(int key, t_fdf *fdf);
 int			hook_keydown(int key, t_fdf *fdf);
+int			hook_mouse(int key, int x, int y, t_fdf *fdf);
 
 // Drawing Process
 void		draw_line(t_line line, t_img *img);
@@ -143,5 +144,8 @@ t_vector	unit_vector(t_view *view);
 
 // Parsing Process
 void		parsing_file(char *file_path, t_data *data);
+
+// Exit Process
+int			close_fdf(t_fdf *fdf);
 
 #endif

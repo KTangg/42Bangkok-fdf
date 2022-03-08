@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:25:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 13:30:56 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:31:49 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ t_pen	move_pen(t_pen pen, int x, int y)
 
 	unit_x = pen.unit.x;
 	unit_y = pen.unit.y;
-	move_x = (x * (int)(unit_x.delta_x * MAGNITUDE))
-		+ (y * (int)(unit_y.delta_x * MAGNITUDE));
-	move_y = (x * (int)(unit_x.delta_y * MAGNITUDE))
-		+ (y * (int)(unit_y.delta_y * MAGNITUDE));
+	move_x = (x * round(unit_x.delta_x * MAGNITUDE))
+		+ (y * round(unit_y.delta_x * MAGNITUDE));
+	move_y = (x * round(unit_x.delta_y * MAGNITUDE))
+		+ (y * round(unit_y.delta_y * MAGNITUDE));
 	pen.coor.x = pen.coor.x + move_x;
 	pen.coor.y = pen.coor.y + move_y;
 	return (pen);

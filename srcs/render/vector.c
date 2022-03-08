@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 00:05:53 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 13:44:14 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:03:17 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ static t_delta	unit_y(t_view *view)
 	return (y);
 }
 
-static t_delta	unit_z(t_delta x, t_delta y)
+static t_delta	unit_z(t_delta x, t_delta y, double level)
 {
 	t_delta	z;
 
-	z.delta_x = (x.delta_x + y.delta_x) * -1;
-	z.delta_y = (x.delta_y + y.delta_y) * -1;
+	z.delta_x = (x.delta_x + y.delta_x) * -1 * level / MAGNITUDE;
+	z.delta_y = (x.delta_y + y.delta_y) * -1 * level / MAGNITUDE;
 	return (z);
 }
 
@@ -64,6 +64,6 @@ t_vector	unit_vector(t_view *view)
 
 	unit.x = unit_x(view);
 	unit.y = unit_y(view);
-	unit.z = unit_z(unit.x, unit.y);
+	unit.z = unit_z(unit.x, unit.y, view->level);
 	return (unit);
 }

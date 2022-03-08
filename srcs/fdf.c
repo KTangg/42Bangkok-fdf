@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:03 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 13:34:35 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:34:20 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static t_view	*init_view(void)
 {
 	t_view	*view;
 
-	view = (t_view *)malloc(sizeof(view) * 1);
+	view = (t_view *)malloc(sizeof(t_view) * 1);
 	if (!view)
 		return (NULL);
 	view->level = 1;
-	view->angle = 30;
+	view->angle = 0;
 	view->scale = 100;
 	view->offset_x = 600;
 	view->offset_y = 300;
@@ -54,6 +54,13 @@ static int	init_mlx(t_info *info)
 	return (1);
 }
 
+int	close_fdf(t_fdf *fdf)
+{
+	free_data(fdf->data);
+	free_info(fdf->info);
+	exit(0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_info	info;
@@ -65,10 +72,11 @@ int	main(int argc, char **argv)
 	parsing_file(argv[1], &data);
 	if (!init_mlx(&info))
 		error_init(&data, &info);
-	fdf.info = info;
-	fdf.data = data;
+	fdf.info = &info;
+	fdf.data = &data;
 	render(&info, &data);
 	mlx_mouse_hook(info.window, hook_mouse, &fdf);
+	mlx_hook(info.window, ON_DESTROY, 0, close_fdf, &fdf);
 	mlx_key_hook(info.window, hook_keydown, &fdf);
 	mlx_loop(info.mlx);
 	return (0);
