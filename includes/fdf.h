@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:11 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 18:11:24 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:47:32 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,17 @@
 # include <errno.h>
 
 # define STDERR 2
+# define Q_KEY 113
+# define E_KEY 101
 # define ESC_KEY 65307
 # define PLUS_KEY 65451
 # define MINUS_KEY 65453
+# define LEFT_KEY 65361
+# define RIGHT_KEY 65363
+# define UP_KEY 65362
+# define DOWN_KEY 65364
 # define ON_DESTROY 17
+
 // Resolution of window
 # define RESO_X 1200
 # define RESO_Y 900
@@ -118,7 +125,7 @@ void		free_array(char **array);
 void		error_init(t_data *data, t_info *info);
 
 // Event Process
-int			hook_keydown(int key, t_fdf *fdf);
+int			hook_keydown_1(int key, t_fdf *fdf);
 int			hook_mouse(int key, int x, int y, t_fdf *fdf);
 
 // Drawing Process
