@@ -6,13 +6,11 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:25:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 14:31:49 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:23:16 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "fdf.h"
-#include "libft.h"
 #include <math.h>
 
 t_pen	init_pen(t_view *view)

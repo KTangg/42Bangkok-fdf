@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:11 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 14:53:42 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:11:24 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct s_view
 {
 	int		scale;
 	int		angle;
-	int		angle_delta;
 	int		offset_x;
 	int		offset_y;
 	double	level;

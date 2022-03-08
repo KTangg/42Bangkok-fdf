@@ -6,13 +6,11 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 00:05:53 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 14:03:17 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:24:32 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "fdf.h"
-#include "libft.h"
 #include <math.h>
 
 static double	deg_to_rad(int degree)

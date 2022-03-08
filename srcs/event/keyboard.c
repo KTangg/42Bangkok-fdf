@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:02:39 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 15:05:45 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 17:59:22 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	hook_keydown_2(int key, t_fdf *fdf)
 
 int	hook_keydown(int key, t_fdf *fdf)
 {
-	printf("key: %d\n", key);
 	if (key == ESC_KEY)
 		close_fdf(fdf);
 	if (key == PLUS_KEY)

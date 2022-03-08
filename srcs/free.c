@@ -6,14 +6,13 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 23:35:53 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 13:05:11 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:25:08 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "fdf.h"
 #include "libft.h"
-#include <math.h>
 
 void	free_array(char **array)
 {

@@ -6,14 +6,13 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:03 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 15:34:20 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:24:57 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "fdf.h"
 #include "libft.h"
-#include <math.h>
 
 static void	usage(void)
 {
@@ -31,9 +30,8 @@ static t_view	*init_view(void)
 	view->level = 1;
 	view->angle = 0;
 	view->scale = 100;
-	view->offset_x = 600;
-	view->offset_y = 300;
-	view->angle_delta = 0;
+	view->offset_x = RESO_X / 2;
+	view->offset_y = RESO_Y / 2;
 	return (view);
 }
 

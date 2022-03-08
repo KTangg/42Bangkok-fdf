@@ -6,14 +6,13 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:44:32 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 13:30:42 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:24:04 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "fdf.h"
 #include "libft.h"
-#include <math.h>
 
 void	clear_image(t_img *image)
 {
