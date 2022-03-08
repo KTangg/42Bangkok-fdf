@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:11 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 16:59:53 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 17:32:14 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ void		error_init(t_data *data, t_info *info);
 // Event Process
 int			hook_keydown(int key, t_fdf *fdf);
 int			hook_mouse(int key, int x, int y, t_fdf *fdf);
+
+// Projection Process
+t_coor	project(t_coor c, double z, t_view *view, t_data *data);
 
 // Render Process
 void		render(t_fdf *fdf);
