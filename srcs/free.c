@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 23:35:53 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 00:12:27 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:05:11 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,6 @@ void	free_info(t_info *info)
 		mlx_destroy_window(info->mlx, info->window);
 	if (info->mlx)
 		free(info->mlx);
+	if (info->view)
+		free(info->view);
 }

@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 14:46:22 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 13:29:55 by spoolpra         ###   ########.fr       */
+/*   Created: 2022/03/08 13:02:39 by spoolpra          #+#    #+#             */
+/*   Updated: 2022/03/08 13:45:13 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "fdf.h"
 #include "libft.h"
-#include <math.h>
 
-void	render(t_info *info, t_data *data)
+int	hook_keydown(int key, t_fdf *fdf)
 {
-	void	*window;
-	t_img	*image;
-
-	image = info->image;
-	window = info->window;
-	clear_image(info->image);
-	draw_image(info->view, data, image);
-	mlx_clear_window(info->mlx, info->window);
-	mlx_put_image_to_window(info->mlx, window, image->mlx_img, 0, 0);
+	if (key == ESC_KEY)
+	{
+		free_data(&fdf->data);
+		free_info(&fdf->info);
+		exit(0);
+	}
+	if (key == PLUS_KEY)
+	{
+		fdf->info.view->level += 0.05;
+		render(&fdf->info, &fdf->data);
+	}
+	if (key == MINUS_KEY)
+	{
+		fdf->info.view->level -= 0.05;
+		render(&fdf->info, &fdf->data);
+	}
+	return (1);
 }

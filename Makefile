@@ -6,7 +6,7 @@
 #    By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 18:33:16 by spoolpra          #+#    #+#              #
-#    Updated: 2022/03/07 16:56:09 by spoolpra         ###   ########.fr        #
+#    Updated: 2022/03/08 13:44:46 by spoolpra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ INCS = -Iincludes/ -I$(LIB_DIR)includes/ -I$(MLX_DIR)
 NAME = fdf
 PARSING = parsing/parsing_file.c parsing/parsing_error.c parsing/parsing_utils.c parsing/parsing_attribute.c
 RENDER = render/render.c render/vector.c render/image.c render/draw.c render/coor.c
-SRCS = fdf.c free.c error.c $(PARSING) $(RENDER)
+EVENT = event/keyboard.c event/mouse.c
+SRCS = fdf.c free.c error.c $(PARSING) $(RENDER) $(EVENT)
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
@@ -36,6 +37,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/parsing
 	@mkdir -p $(OBJ_DIR)/render
+	@mkdir -p $(OBJ_DIR)/event
 	$(CC) $(CFLAGS) -c $< $(INCS) -o $@
 bonus: $(NAME)
 clean:

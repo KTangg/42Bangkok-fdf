@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:44:32 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 00:13:33 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:30:42 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	image_put_pixel(t_img *image, int x, int y, int color)
 	((int *)image->ptr)[(y * RESO_X) + x] = color;
 }
 
-void	draw_image(t_view view, t_data *data, t_img *image)
+void	draw_image(t_view *view, t_data *data, t_img *image)
 {
 	size_t		x;
 	size_t		y;

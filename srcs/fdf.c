@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:03 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 00:27:25 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:34:35 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,24 @@ static void	usage(void)
 	exit(1);
 }
 
+static t_view	*init_view(void)
+{
+	t_view	*view;
+
+	view = (t_view *)malloc(sizeof(view) * 1);
+	if (!view)
+		return (NULL);
+	view->level = 1;
+	view->angle = 30;
+	view->scale = 100;
+	view->offset_x = 600;
+	view->offset_y = 300;
+	view->angle_delta = 0;
+	return (view);
+}
+
 static int	init_mlx(t_info *info)
 {
-	t_view	view;
-
 	info->mlx = NULL;
 	info->window = NULL;
 	info->mlx = mlx_init();
@@ -36,49 +50,7 @@ static int	init_mlx(t_info *info)
 	info->image = create_new_img(info);
 	if (!info->image)
 		return (0);
-	view.scale = 100;
-	view.angle_x = 30;
-	view.angle_y = 30;
-	view.offset_x = 0;
-	view.offset_y = 0;
-	view.level = 1;
-	info->view = view;
-	return (1);
-}
-
-static int	hook_keydown(int key, t_fdf *fdf)
-{
-	printf("%d\n", key);
-	if (key == ESC_KEY)
-	{
-		free_data(&fdf->data);
-		free_info(&fdf->info);
-		exit(0);
-	}
-	if (key == 65451)
-	{
-		fdf->info.view.scale += 1;
-		render(&fdf->info, &fdf->data);
-	}
-	if (key == 65453)
-	{
-		fdf->info.view.scale -= 1;
-		render(&fdf->info, &fdf->data);
-	}
-	return (1);
-}
-
-static int	hook_mouse(int key, t_fdf *fdf)
-{
-	if (key == 4)
-	{
-		fdf->info.view.scale += 1;
-	}
-	if (key == 5)
-	{
-		fdf->info.view.scale -= 1;
-		render(&fdf->info, &fdf->data);
-	}
+	info->view = init_view();
 	return (1);
 }
 
