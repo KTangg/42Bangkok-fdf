@@ -6,15 +6,16 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:02:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 17:06:16 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:32:22 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx.h"
 #include "fdf.h"
 #include "libft.h"
 #include <math.h>
 
-static void	draw_line(t_line line, t_img *img)
+void	draw_line(t_line line, t_img *img)
 {
 	int		i;
 	int		delta_c;
@@ -30,10 +31,10 @@ static void	draw_line(t_line line, t_img *img)
 	i = 0;
 	while (i < size)
 	{
-		if (line.start.x + round(delta.delta_x * i) <= RESO_X
-			&& line.start.x + round(delta.delta_x * i) >= 0
-			&& line.start.y + round(delta.delta_y * i) <= RESO_Y
-			&& line.start.y + round(delta.delta_y * i) >= 0)
+		if (line.start.x + round(delta.delta_x * i) <= RESO_X &&
+			line.start.x + round(delta.delta_x * i) >= 0 &&
+			line.start.y + round(delta.delta_y * i) <= RESO_Y &&
+			line.start.y + round(delta.delta_y * i) >= 0)
 		{
 			image_put_pixel(img, line.start.x + round(delta.delta_x * i),
 				line.start.y + round(delta.delta_y * i),
@@ -43,49 +44,24 @@ static void	draw_line(t_line line, t_img *img)
 	}
 }
 
-static void	connect_coor(t_fdf *fdf, t_coor c1, t_coor c2)
+void	connect_x(t_img *img, t_pen pen, t_data *data, int index)
 {
-	size_t	i_c1;
-	size_t	i_c2;
-	t_data	*data;
 	t_line	line;
 
-	data = fdf->data;
-	i_c1 = (data->n_col * c1.y) + c1.x;
-	i_c2 = (data->n_col * c1.y) + c1.x;
-	c1 = project(c1, data->attribute[i_c1], fdf->info->view, data);
-	c2 = project(c2, data->attribute[i_c2], fdf->info->view, data);
-	if (c1.c == 0)
-		c1.c = data->color[i_c1];
-	if (c2.c == 0)
-		c2.c = data->color[i_c2];
-	line = (t_line){c1, c2};
-	draw_line(line, fdf->info->image);
+	line.start = move_coor(pen, 0, 0, data->attribute[index]);
+	line.start.c = data->color[index];
+	line.end = move_coor(pen, 1, 0, data->attribute[index + 1]);
+	line.end.c = data->color[index + 1];
+	draw_line(line, img);
 }
 
-void	draw_image(t_fdf *fdf)
+void	connect_y(t_img *img, t_pen pen, t_data *data, int i)
 {
-	int			color;
-	t_data		*data;
-	size_t		x;
-	size_t		y;
+	t_line	line;
 
-	data = fdf->data;
-	color = 0;
-	y = 0;
-	while (y < data->n_row)
-	{
-		x = 0;
-		while (x < data->n_col)
-		{
-			if (x + 1 < data->n_col)
-				connect_coor(fdf, (t_coor){x, y, color},
-					(t_coor){x + 1, y, color});
-			if (y + 1 < data->n_row)
-				connect_coor(fdf, (t_coor){x, y, color},
-					(t_coor){x, y + 1, color});
-			x++;
-		}
-		y++;
-	}
+	line.start = move_coor(pen, 0, 0, data->attribute[i]);
+	line.start.c = data->color[i];
+	line.end = move_coor(pen, 0, 1, data->attribute[i + data->n_col]);
+	line.end.c = data->color[i + data->n_col];
+	draw_line(line, img);
 }
