@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:03 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 20:12:53 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 23:20:42 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_view	*init_view(void)
 	if (!view)
 		return (NULL);
 	view->level = 1;
-	view->angle = 0;
+	view->angle = 45;
 	view->scale = 100;
 	view->offset_x = RESO_X / 2;
 	view->offset_y = RESO_Y / 2;

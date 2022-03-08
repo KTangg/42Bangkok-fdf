@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:05:42 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 20:57:41 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 23:23:07 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static t_delta	unit_x(t_view *view)
 	double	delta_y;
 	t_delta	x;
 
-	delta_x = 1 * (double)view->scale / 100;
-	delta_y = 0;
+	delta_x = cos(deg_to_rad(view->angle)) * view->scale / 100;
+	delta_y = sin(deg_to_rad(view->angle)) * view->scale / 100;
 	x.delta_x = delta_x;
 	x.delta_y = delta_y;
 	return (x);
@@ -40,23 +40,19 @@ static t_delta	unit_y(t_view *view)
 	double	delta_y;
 	t_delta	y;
 
-	delta_x = 0;
-	delta_y = 1 * (double)view->scale / 100;
+	delta_x = -sin(deg_to_rad(view->angle)) * view->scale / 100;
+	delta_y = cos(deg_to_rad(view->angle)) * view->scale / 100;
 	y.delta_x = delta_x;
 	y.delta_y = delta_y;
 	return (y);
 }
 
-static t_delta	unit_z(t_view *view)
+static t_delta	unit_z(t_delta x, t_delta y, double level)
 {
-	double	delta_x;
-	double	delta_y;
 	t_delta	z;
 
-	delta_x = cos(deg_to_rad(view->angle)) * (double)view->scale / 100;
-	delta_y = sin(deg_to_rad(view->angle)) * (double)view->scale / 100;
-	z.delta_x = delta_x * view->level / MAGNITUDE;
-	z.delta_y = delta_y * view->level / MAGNITUDE;
+	z.delta_x = (x.delta_x + y.delta_x) * -1 * level / MAGNITUDE;
+	z.delta_y = (x.delta_y + y.delta_y) * -1 * level / MAGNITUDE;
 	return (z);
 }
 
@@ -66,6 +62,6 @@ t_vector	parallel_unit_vector(t_view *view)
 
 	unit.x = unit_x(view);
 	unit.y = unit_y(view);
-	unit.z = unit_z(view);
+	unit.z = unit_z(unit.x, unit.y, view->level);
 	return (unit);
 }
