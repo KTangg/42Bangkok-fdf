@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:11 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 20:14:23 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:22:02 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define STDERR 2
 # define Q_KEY 113
 # define E_KEY 101
+# define I_KEY 105
+# define P_KEY 112
 # define ESC_KEY 65307
 # define PLUS_KEY 65451
 # define MINUS_KEY 65453
