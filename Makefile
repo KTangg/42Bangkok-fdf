@@ -6,7 +6,7 @@
 #    By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 18:33:16 by spoolpra          #+#    #+#              #
-#    Updated: 2022/03/11 16:26:26 by spoolpra         ###   ########.fr        #
+#    Updated: 2022/03/11 16:46:58 by spoolpra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ all: $(NAME)
 
 $(NAME): $(addprefix $(OBJ_DIR),$(OBJS))
 	@make -C $(LIB_DIR) --silent
+	@make -C $(MLX_DIR) --silent
 	$(CC) $^ -o $(NAME) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -lm
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
@@ -42,6 +43,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 bonus: $(NAME)
 clean:
 	@make -C $(LIB_DIR) clean --silent
+	@make -C $(MLX_DIR) clean --silent
 	$(RM) $(OBJ_DIR)
 fclean: clean
 	@make -C $(LIB_DIR) fclean --silent
