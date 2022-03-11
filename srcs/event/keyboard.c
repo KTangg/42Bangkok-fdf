@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:02:39 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 20:26:05 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/11 16:25:48 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ int	hook_keydown_1(int key, t_fdf *fdf)
 		close_fdf(fdf);
 	if (key == PLUS_KEY)
 	{
-		fdf->info->view->level += 0.05;
+		fdf->info->view->level += 0.1;
 		render(fdf->info, fdf->data);
 	}
 	if (key == MINUS_KEY)
 	{
-		fdf->info->view->level -= 0.05;
+		fdf->info->view->level -= 0.1;
 		render(fdf->info, fdf->data);
 	}
 	else

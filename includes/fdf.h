@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:51:11 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 20:22:02 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/11 14:17:35 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 # include <errno.h>
 
 # define STDERR 2
-# define Q_KEY 113
-# define E_KEY 101
-# define I_KEY 105
-# define P_KEY 112
-# define ESC_KEY 65307
-# define PLUS_KEY 65451
-# define MINUS_KEY 65453
-# define LEFT_KEY 65361
-# define RIGHT_KEY 65363
-# define UP_KEY 65362
-# define DOWN_KEY 65364
+# define Q_KEY 12
+# define E_KEY 14
+# define I_KEY 34
+# define P_KEY 35
+# define ESC_KEY 53
+# define PLUS_KEY 24
+# define MINUS_KEY 27
+# define LEFT_KEY 123
+# define RIGHT_KEY 124
+# define UP_KEY 126
+# define DOWN_KEY 125
 # define ON_DESTROY 17
 
 // Resolution of window

@@ -6,7 +6,7 @@
 /*   By: spoolpra <spoolpra@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:02:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/03/08 18:23:38 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:09:05 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	draw_line(t_line line, t_img *img)
 	i = 0;
 	while (i < size)
 	{
-		if (line.start.x + round(delta.delta_x * i) <= RESO_X
-			&& line.start.x + round(delta.delta_x * i) >= 0
-			&& line.start.y + round(delta.delta_y * i) <= RESO_Y
-			&& line.start.y + round(delta.delta_y * i) >= 0)
+		if (line.start.x + round(delta.delta_x * i) < RESO_X
+			&& line.start.x + round(delta.delta_x * i) > 0
+			&& line.start.y + round(delta.delta_y * i) < RESO_Y
+			&& line.start.y + round(delta.delta_y * i) > 0)
 		{
 			image_put_pixel(img, line.start.x + round(delta.delta_x * i),
 				line.start.y + round(delta.delta_y * i),
