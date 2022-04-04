@@ -31,7 +31,7 @@ For more maps: [Map for FDF](https://github.com/KTangg/42Bangkok-fdf/files/84110
 FDF file which contain which is 3D coordinate (x, y, z) but computer display only got 2D coordinate (x, y). \
 The 3D-Projection is a design technique used to display a n-dimensional object on a n − 1 dimensional surface.
 
-Project algorithm in my FDF for Θ Rotate angle.
+Projection equation in my FDF project for Θ Rotate angle.
 |***Project Coordinate***|***Equations***|
 |-------------------|------------------------|
 |x<sub>*proj*</sub>| *cos(Θ)* x<sub>*3d*</sub> - *sin(Θ)* y<sub>*3d*</sub> - (*cos(Θ)* - *sin(Θ)*)z<sub>*3d*</sub>|
