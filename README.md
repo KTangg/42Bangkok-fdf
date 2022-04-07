@@ -37,7 +37,7 @@ Projection equation in my FDF project for Θ Rotate angle.
 |x<sub>*proj*</sub>| *cos(Θ)* x<sub>*3d*</sub> - *sin(Θ)* y<sub>*3d*</sub> - (*cos(Θ)* - *sin(Θ)*)z<sub>*3d*</sub>|
 |y<sub>*proj*</sub>| (*sin(Θ)* x<sub>*3d*</sub> + *cos(Θ)* y<sub>*3d*</sub> - (*sin(Θ)* + *cos(Θ)*)z<sub>*3d*</sub>) \* 0.707|
 
-\* 0.707(sin(30) / sin(45)) is for orthogonal projection in y axis.
+\* 0.707(sin(30) / sin(45)) is for isometric projection in y axis.
 
 [More about Projection](https://en.wikipedia.org/wiki/3D_projection)
 
